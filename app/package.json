@@ -1,0 +1,19 @@
+{
+  "name": "libdc-tool",
+  "productName": "LibDC Tool",
+  "identifier": "com.apporiented.libdc-tool",
+  "description": "Tool for downloading data from dive computers.",
+  "version": "0.1.0",
+  "author": "Lars Behnke",
+  "main": "background.js",
+  "config": {
+    "target": "development"
+  },
+  "dependencies": {
+    "fs-jetpack"  : "^0.7.0",
+    "ref"         : "1.2.0",
+    "ref-struct"  : "1.0.2",
+    "ffi"         : "2.0.0",
+    "node-gyp"    : "2.0.2"
+  }
+}
