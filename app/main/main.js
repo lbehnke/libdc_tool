@@ -20,6 +20,16 @@ var dc_status = {
     DC_STATUS_CANCELLED : -10
 };
 
+
+
+var dc_device_t                     = ref.types.void;
+var dc_device_t_ptr                 = ref.refType(dc_device_t);
+var dc_device_t_ptr_ptr             = ref.refType(dc_device_t_ptr);
+
+var dc_context_t                     = ref.types.void;
+var dc_context_t_ptr                 = ref.refType(dc_context_t);
+var dc_context_t_ptr_ptr             = ref.refType(dc_context_t_ptr);
+
 var dc_descriptor_t                  = ref.types.void;
 var dc_descriptor_t_ptr              = ref.refType(dc_descriptor_t);
 var dc_descriptor_t_ptr_ptr          = ref.refType(dc_descriptor_t_ptr);
@@ -39,7 +49,14 @@ var libdc = ffi.Library('build/vendor/libdc_tool/native/libdivecomputer', {
     'dc_descriptor_get_product'        : [ref.types.CString, [dc_descriptor_t_ptr]],
     'dc_descriptor_get_type'           : [ref.types.uint, [dc_descriptor_t_ptr]],
     'dc_descriptor_get_model'          : [ref.types.uint, [dc_descriptor_t_ptr]],
-    'dc_descriptor_get_transport'      : [ref.types.CString, [dc_descriptor_t_ptr]]
+    'dc_descriptor_get_transport'      : [ref.types.CString, [dc_descriptor_t_ptr]],
+    'dc_context_new'                   : [ref.types.int, [dc_context_t_ptr_ptr]],
+    'dc_device_open'                   : [ref.types.int, [dc_device_t_ptr_ptr, dc_context_t_ptr, dc_descriptor_iterator_t_ptr, ref.types.CString]],
+    'dc_device_set_fingerprint'        : [ref.types.int, [dc_device_t_ptr, ref.types.CString, ref.types.int]]
+
+    //dc_status_t dc_device_set_fingerprint (dc_device_t *device, const unsigned char data[], unsigned int size)
+
+    //dc_status_t status = dc_device_open(&device, context, descriptor, devname);
 });
 
 export var listSupportedComputers = function () {
